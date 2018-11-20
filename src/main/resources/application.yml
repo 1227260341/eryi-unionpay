@@ -1,0 +1,20 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: eryi-unionpay
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:/www/ecampus/static/
+      ,file:///D:\project\zj-websocket\zj-websocket-chat/files/
+  
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/ecampus_new?characterEncoding=utf-8
+    username: root
+    password: root
+    
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  type-aliases-package: com.eryi.data.domain
+  type-handlers-package: com.eruo.data.mapper
+  mapper-locations: classpath:com.eryi.data.mapper/*.xml

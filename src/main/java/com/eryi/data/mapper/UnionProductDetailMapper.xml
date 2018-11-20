@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eryi.data.mapper.UnionProductDetailMapper">
+
+    <resultMap id="BaseResultMap" type="com.eryi.data.domain.UnionProductDetail">
+        <id column="id" property="id" />
+        <result column="mer_id" property="merId" />
+        <result column="order_id" property="orderId" />
+        <result column="access_type" property="accessType" />
+        <result column="txn_time" property="txnTime" />
+        <result column="txn_amt" property="txnAmt" />
+        <result column="currency_code" property="currencyCode" />
+        <result column="sign_method" property="signMethod" />
+        <result column="txn_type" property="txnType" />
+        <result column="txn_sub_type" property="txnSubType" />
+        <result column="biz_type" property="bizType" />
+        <result column="channel_type" property="channelType" />
+        <result column="qr_code" property="qrCode" />
+        <result column="back_url" property="backUrl" />
+        <result column="front_url" property="frontUrl" />
+        <result column="reqReserved" property="reqReserved" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, mer_id AS merId, order_id AS orderId, access_type AS accessType, txn_time AS txnTime,
+         txn_amt AS txnAmt, currency_code AS currencyCode, sign_method AS signMethod, 
+         txn_type AS txnType, txn_sub_type AS txnSubType, biz_type AS bizType, 
+         channel_type AS channelType, qr_code qrCode, back_url AS backUrl, front_url AS frontUrl, reqReserved
+    </sql>
+
+	<select id="queryByPage" parameterType="com.eryi.data.domain.UnionProductDetail" resultType="com.eryi.data.domain.UnionProductDetail" useCache="false">
+		
+		select 
+			<include refid="Base_Column_List" /> 
+		from union_product_detail
+		where 1=1
+		<if test="id != null and id != ''">
+			and id = #{id}
+		</if>
+		<if test="merId != null and merId != ''">
+			and mer_id = #{merId}
+		</if>
+		<if test="orderId != null and orderId != ''">
+			and order_id = #{orderId}
+		</if>
+		<if test="accessType != null and accessType != ''">
+			and access_type = #{accessType}
+		</if>
+		<if test="txnTime != null and txnTime != ''">
+			and txn_time = #{txnTime}
+		</if>
+		<if test="txnAmt != null and txnAmt != ''">
+			and txn_amt = #{txnAmt}
+		</if>
+		<if test="currencyCode != null and currencyCode != ''">
+			and currency_code = #{currencyCode}
+		</if>
+		<if test="signMethod != null and signMethod != ''">
+			and sign_method = #{signMethod}
+		</if>
+		<if test="txnType != null and txnType != ''">
+			and txn_type = #{txnType}
+		</if>
+		<if test="txnSubType != null and txnSubType != ''">
+			and txn_sub_type = #{txnSubType}
+		</if>
+		<if test="bizType != null and bizType != ''">
+			and biz_type = #{bizType}
+		</if>
+		<if test="channelType != null and channelType != ''">
+			and channel_type = #{channelType}
+		</if>
+		<if test="backUrl != null and backUrl != ''">
+			and back_url = #{backUrl}
+		</if>
+		<if test="frontUrl != null and frontUrl != ''">
+			and front_url = #{frontUrl}
+		</if>
+		<if test="reqReserved != null and reqReserved != ''">
+			and reqReserved = #{reqReserved}
+		</if>
+		
+  	</select>
+  	
+  	<insert id="add" parameterType="com.eryi.data.domain.UnionProductDetail" useGeneratedKeys="true" keyProperty="id">
+	    insert into union_product_detail
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	    <if test="id != null" >
+			id,
+		</if>
+	    <if test="merId != null" >
+			mer_id,
+		</if>
+	    <if test="orderId != null" >
+			order_id,
+		</if>
+	    <if test="accessType != null" >
+			access_type,
+		</if>
+	    <if test="txnTime != null" >
+			txn_time,
+		</if>
+	    <if test="txnAmt != null" >
+			txn_amt,
+		</if>
+	    <if test="currencyCode != null" >
+			currency_code,
+		</if>
+	    <if test="signMethod != null" >
+			sign_method,
+		</if>
+	    <if test="txnType != null" >
+			txn_type,
+		</if>
+	    <if test="txnSubType != null" >
+			txn_sub_type,
+		</if>
+	    <if test="bizType != null" >
+			biz_type,
+		</if>
+	    <if test="channelType != null" >
+			channel_type,
+		</if>
+		<if test="qrCode != null" >
+			qr_code,
+		</if>
+	    <if test="backUrl != null" >
+			back_url,
+		</if>
+	    <if test="frontUrl != null" >
+			front_url,
+		</if>
+	    <if test="reqReserved != null" >
+			reqReserved,
+		</if>
+	    	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="id != null" >
+			#{id,jdbcType=VARCHAR},
+		</if>
+		<if test="merId != null" >
+			#{merId,jdbcType=VARCHAR},
+		</if>
+		<if test="orderId != null" >
+			#{orderId,jdbcType=VARCHAR},
+		</if>
+		<if test="accessType != null" >
+			#{accessType,jdbcType=VARCHAR},
+		</if>
+		<if test="txnTime != null" >
+			#{txnTime,jdbcType=VARCHAR},
+		</if>
+		<if test="txnAmt != null" >
+			#{txnAmt,jdbcType=VARCHAR},
+		</if>
+		<if test="currencyCode != null" >
+			#{currencyCode,jdbcType=VARCHAR},
+		</if>
+		<if test="signMethod != null" >
+			#{signMethod,jdbcType=VARCHAR},
+		</if>
+		<if test="txnType != null" >
+			#{txnType,jdbcType=VARCHAR},
+		</if>
+		<if test="txnSubType != null" >
+			#{txnSubType,jdbcType=VARCHAR},
+		</if>
+		<if test="bizType != null" >
+			#{bizType,jdbcType=VARCHAR},
+		</if>
+		<if test="channelType != null" >
+			#{channelType,jdbcType=VARCHAR},
+		</if>
+		<if test="qrCode != null" >
+			#{qrCode,jdbcType=VARCHAR},
+		</if>
+		<if test="backUrl != null" >
+			#{backUrl,jdbcType=VARCHAR},
+		</if>
+		<if test="frontUrl != null" >
+			#{frontUrl,jdbcType=VARCHAR},
+		</if>
+		<if test="reqReserved != null" >
+			#{reqReserved,jdbcType=VARCHAR},
+		</if>
+	  </trim>
+	    
+  </insert>
+  
+  <insert id="addForMap" parameterType="Map" useGeneratedKeys="true" keyProperty="id">
+	    insert into union_product_detail
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	    <if test="id != null" >
+			id,
+		</if>
+	    <if test="merId != null" >
+			mer_id,
+		</if>
+	    <if test="orderId != null" >
+			order_id,
+		</if>
+	    <if test="accessType != null" >
+			access_type,
+		</if>
+	    <if test="txnTime != null" >
+			txn_time,
+		</if>
+	    <if test="txnAmt != null" >
+			txn_amt,
+		</if>
+	    <if test="currencyCode != null" >
+			currency_code,
+		</if>
+	    <if test="signMethod != null" >
+			sign_method,
+		</if>
+	    <if test="txnType != null" >
+			txn_type,
+		</if>
+	    <if test="txnSubType != null" >
+			txn_sub_type,
+		</if>
+	    <if test="bizType != null" >
+			biz_type,
+		</if>
+	    <if test="channelType != null" >
+			channel_type,
+		</if>
+		<if test="qrCode != null" >
+			qr_code,
+		</if>
+	    <if test="backUrl != null" >
+			back_url,
+		</if>
+	    <if test="frontUrl != null" >
+			front_url,
+		</if>
+	    <if test="reqReserved != null" >
+			reqReserved,
+		</if>
+	    	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="id != null" >
+			#{id,jdbcType=VARCHAR},
+		</if>
+		<if test="merId != null" >
+			#{merId,jdbcType=VARCHAR},
+		</if>
+		<if test="orderId != null" >
+			#{orderId,jdbcType=VARCHAR},
+		</if>
+		<if test="accessType != null" >
+			#{accessType,jdbcType=VARCHAR},
+		</if>
+		<if test="txnTime != null" >
+			#{txnTime,jdbcType=VARCHAR},
+		</if>
+		<if test="txnAmt != null" >
+			#{txnAmt,jdbcType=VARCHAR},
+		</if>
+		<if test="currencyCode != null" >
+			#{currencyCode,jdbcType=VARCHAR},
+		</if>
+		<if test="signMethod != null" >
+			#{signMethod,jdbcType=VARCHAR},
+		</if>
+		<if test="txnType != null" >
+			#{txnType,jdbcType=VARCHAR},
+		</if>
+		<if test="txnSubType != null" >
+			#{txnSubType,jdbcType=VARCHAR},
+		</if>
+		<if test="bizType != null" >
+			#{bizType,jdbcType=VARCHAR},
+		</if>
+		<if test="channelType != null" >
+			#{channelType,jdbcType=VARCHAR},
+		</if>
+		<if test="qrCode != null" >
+			#{qrCode,jdbcType=VARCHAR},
+		</if>
+		<if test="backUrl != null" >
+			#{backUrl,jdbcType=VARCHAR},
+		</if>
+		<if test="frontUrl != null" >
+			#{frontUrl,jdbcType=VARCHAR},
+		</if>
+		<if test="reqReserved != null" >
+			#{reqReserved,jdbcType=VARCHAR},
+		</if>
+	  </trim>
+	    
+  </insert>
+  
+  <update id="update" parameterType="com.eryi.data.domain.UnionProductDetail" >
+
+    update union_product_detail
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+	  <if test="merId != null" >
+        mer_id = #{merId,jdbcType=VARCHAR},
+      </if>
+	  <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+	  <if test="accessType != null" >
+        access_type = #{accessType,jdbcType=VARCHAR},
+      </if>
+	  <if test="txnTime != null" >
+        txn_time = #{txnTime,jdbcType=VARCHAR},
+      </if>
+	  <if test="txnAmt != null" >
+        txn_amt = #{txnAmt,jdbcType=VARCHAR},
+      </if>
+	  <if test="currencyCode != null" >
+        currency_code = #{currencyCode,jdbcType=VARCHAR},
+      </if>
+	  <if test="signMethod != null" >
+        sign_method = #{signMethod,jdbcType=VARCHAR},
+      </if>
+	  <if test="txnType != null" >
+        txn_type = #{txnType,jdbcType=VARCHAR},
+      </if>
+	  <if test="txnSubType != null" >
+        txn_sub_type = #{txnSubType,jdbcType=VARCHAR},
+      </if>
+	  <if test="bizType != null" >
+        biz_type = #{bizType,jdbcType=VARCHAR},
+      </if>
+	  <if test="channelType != null" >
+        channel_type = #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="backUrl != null" >
+        qr_code = #{qrCode,jdbcType=VARCHAR},
+      </if>
+	  <if test="backUrl != null" >
+        back_url = #{backUrl,jdbcType=VARCHAR},
+      </if>
+	  <if test="frontUrl != null" >
+        front_url = #{frontUrl,jdbcType=VARCHAR},
+      </if>
+	  <if test="reqReserved != null" >
+        reqReserved = #{reqReserved,jdbcType=VARCHAR},
+      </if>
+	  </set>
+	where id = #{id,jdbcType=INTEGER}
+	
+  </update>
+  
+  	
+  	
+  	
+
+</mapper>

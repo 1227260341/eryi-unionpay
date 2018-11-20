@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eryi.data.mapper.UnionMerchantMapper">
+
+    <resultMap id="BaseResultMap" type="com.eryi.data.domain.UnionMerchant">
+        <id column="id" property="id" />
+        <result column="app_id" property="appId" />
+        <result column="number" property="number" />
+        <result column="make_time" property="makeTime" />
+        <result column="valid_flag" property="validFlag" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, app_id AS appId, number, make_time AS makeTime, valid_flag AS validFlag
+    </sql>
+
+	<select id="queryByPage" parameterType="com.eryi.data.domain.UnionMerchant" resultType="com.eryi.data.domain.UnionMerchant" useCache="false">
+		
+		select 
+			<include refid="Base_Column_List" /> 
+		from union_merchant
+		where 1=1
+		<if test="id != null and id != ''">
+			and id = #{id}
+		</if>
+		<if test="appId != null and appId != ''">
+			and app_id = #{appId}
+		</if>
+		<if test="number != null and number != ''">
+			and number = #{number}
+		</if>
+		<if test="makeTime != null and makeTime != ''">
+			and make_time = #{makeTime}
+		</if>
+		<if test="validFlag != null and validFlag != ''">
+			and valid_flag = #{validFlag}
+		</if>
+		
+  	</select>
+  	
+  	<insert id="add" parameterType="com.eryi.data.domain.UnionMerchant" useGeneratedKeys="true" keyProperty="id">
+	    insert into union_merchant
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	    <if test="id != null" >
+			id,
+		</if>
+	    <if test="appId != null" >
+			app_id,
+		</if>
+	    <if test="number != null" >
+			number,
+		</if>
+	    <if test="makeTime != null" >
+			make_time,
+		</if>
+	    <if test="validFlag != null" >
+			valid_flag,
+		</if>
+	    	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="id != null" >
+			#{id,jdbcType=VARCHAR},
+		</if>
+		<if test="appId != null" >
+			#{appId,jdbcType=VARCHAR},
+		</if>
+		<if test="number != null" >
+			#{number,jdbcType=VARCHAR},
+		</if>
+		<if test="makeTime != null" >
+			#{makeTime,jdbcType=VARCHAR},
+		</if>
+		<if test="validFlag != null" >
+			#{validFlag,jdbcType=VARCHAR},
+		</if>
+	  </trim>
+	    
+  </insert>
+  
+  <update id="update" parameterType="com.eryi.data.domain.UnionMerchant" >
+
+    update union_merchant
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+	  <if test="appId != null" >
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+	  <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+	  <if test="makeTime != null" >
+        make_time = #{makeTime,jdbcType=VARCHAR},
+      </if>
+	  <if test="validFlag != null" >
+        valid_flag = #{validFlag,jdbcType=VARCHAR},
+      </if>
+	  </set>
+	where id = #{id,jdbcType=INTEGER}
+	
+  </update>
+  
+  <update id="setInvalidWithString" parameterType="String" >
+
+    update union_merchant
+    <set >
+	</set>
+	where id = #{id}
+	
+  </update>
+  
+  <update id="setInvalidWithInt" parameterType="Integer" >
+
+    update union_merchant
+    <set >
+	</set>
+	where id = #{id}
+	
+  </update>
+  	
+  	
+  	
+
+</mapper>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eryi.data.mapper.UnionPayMapper">
+
+    <resultMap id="BaseResultMap" type="com.eryi.data.domain.UnionPay">
+        <id column="id" property="id" />
+        <result column="query_id" property="queryId" />
+        <result column="mer_id" property="merId" />
+        <result column="order_id" property="orderId" />
+        <result column="trace_time" property="traceTime" />
+        <result column="status" property="status" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, query_id queryId, mer_id AS merId, order_id AS orderId, trace_time traceTime, status
+    </sql>
+
+	<select id="queryByPage" parameterType="com.eryi.data.domain.UnionPay" resultType="com.eryi.data.domain.UnionPay" useCache="false">
+		
+		select 
+			<include refid="Base_Column_List" /> 
+		from union_pay
+		where 1=1
+		<if test="id != null and id != ''">
+			and id = #{id}
+		</if>
+		<if test="queryId != null and queryId != ''">
+			and query_id = #{queryId}
+		</if>
+		<if test="merId != null and merId != ''">
+			and mer_id = #{merId}
+		</if>
+		<if test="orderId != null and orderId != ''">
+			and order_id = #{orderId}
+		</if>
+		<if test="traceTime != null and traceTime != ''">
+			and trace_time = #{traceTime}
+		</if>
+		<if test="status != null and status != ''">
+			and status = #{status}
+		</if>
+		
+  	</select>
+  	
+  	<insert id="add" parameterType="com.eryi.data.domain.UnionPay" useGeneratedKeys="true" keyProperty="id">
+	    insert into union_pay
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	    <if test="id != null" >
+			id,
+		</if>
+	    <if test="queryId != null" >
+			query_id,
+		</if>
+	    <if test="merId != null" >
+			mer_id,
+		</if>
+	    <if test="orderId != null" >
+			order_id,
+		</if>
+	    <if test="traceTime != null" >
+			trace_time,
+		</if>
+	    <if test="status != null" >
+			status,
+		</if>
+	    	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="id != null" >
+			#{id,jdbcType=VARCHAR},
+		</if>
+		<if test="queryId != null" >
+			#{queryId,jdbcType=VARCHAR},
+		</if>
+		<if test="merId != null" >
+			#{merId,jdbcType=VARCHAR},
+		</if>
+		<if test="orderId != null" >
+			#{orderId,jdbcType=VARCHAR},
+		</if>
+		<if test="traceTime != null" >
+			#{traceTime,jdbcType=VARCHAR},
+		</if>
+		<if test="status != null" >
+			#{status,jdbcType=VARCHAR},
+		</if>
+	  </trim>
+	    
+  </insert>
+  
+  <insert id="addForMap" parameterType="Map" useGeneratedKeys="true" keyProperty="id">
+	    insert into union_pay
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+	    <if test="id != null" >
+			id,
+		</if>
+	    <if test="queryId != null" >
+			query_id,
+		</if>
+	    <if test="merId != null" >
+			mer_id,
+		</if>
+	    <if test="orderId != null" >
+			order_id,
+		</if>
+	    <if test="traceTime != null" >
+			trace_time,
+		</if>
+	    <if test="status != null" >
+			status,
+		</if>
+	    	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="id != null" >
+			#{id,jdbcType=VARCHAR},
+		</if>
+		<if test="queryId != null" >
+			#{queryId,jdbcType=VARCHAR},
+		</if>
+		<if test="merId != null" >
+			#{merId,jdbcType=VARCHAR},
+		</if>
+		<if test="orderId != null" >
+			#{orderId,jdbcType=VARCHAR},
+		</if>
+		<if test="traceTime != null" >
+			#{traceTime,jdbcType=VARCHAR},
+		</if>
+		<if test="status != null" >
+			#{status,jdbcType=VARCHAR},
+		</if>
+	  </trim>
+	    
+  </insert>
+  
+  <update id="update" parameterType="com.eryi.data.domain.UnionPay" >
+
+    update union_pay
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+	  <if test="queryId != null" >
+        query_id = #{queryId,jdbcType=VARCHAR},
+      </if>
+	  <if test="merId != null" >
+        mer_id = #{merId,jdbcType=VARCHAR},
+      </if>
+	  <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+	  <if test="traceTime != null" >
+        trace_time = #{traceTime,jdbcType=VARCHAR},
+      </if>
+	  <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+	  </set>
+	where id = #{id,jdbcType=INTEGER}
+	
+  </update>
+  
+  <update id="updateForMap" parameterType="Map" >
+
+    update union_pay
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+	  <if test="queryId != null" >
+        query_id = #{queryId,jdbcType=VARCHAR},
+      </if>
+	  <if test="merId != null" >
+        mer_id = #{merId,jdbcType=VARCHAR},
+      </if>
+	  <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+	  <if test="traceTime != null" >
+        trace_time = #{traceTime,jdbcType=VARCHAR},
+      </if>
+	  <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+	  </set>
+	where id = #{id,jdbcType=INTEGER}
+	
+  </update>
+  
+  	
+
+</mapper>
